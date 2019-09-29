@@ -1,6 +1,8 @@
 package com.apirest.models;
 
+import java.io.File;
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.List;
 import javax.persistence.CascadeType;
 import static javax.persistence.CascadeType.ALL;
@@ -16,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="TB_PRODUTO")
@@ -36,6 +39,30 @@ public class Produto implements Serializable {
 
 	private String desc_produto;
         
+       
+        @Column(length = 1000)
+        private String picture;
+       
+        
+        public void convert(MultipartFile foto) throws Exception{
+            try{
+               this.picture = "C:\\xampp\\htdocs\\"+ foto.getOriginalFilename();
+                
+                foto.transferTo(new File(this.picture));
+                this.picture = "http://localhost/"+foto.getOriginalFilename();
+            }catch(Exception e ){
+                throw new Exception(e.getMessage());
+            }
+        }
+
+        public String getPicture() {
+            return picture;
+        }
+
+        public void setPicture(String picture) {
+            this.picture = picture;
+        }
+
         @NotNull
         @Column(length = 1000)
         private String linkSite;

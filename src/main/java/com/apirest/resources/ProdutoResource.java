@@ -15,15 +15,19 @@ import io.swagger.annotations.ApiOperation;
 import com.apirest.models.Produto;
 import com.apirest.models.ProdutoFactory;
 import com.apirest.repository.EspecificacoesRepository;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Clock;
 import java.util.List;
 import javax.validation.Valid;
 import org.hibernate.Session;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -74,18 +78,18 @@ public class ProdutoResource {
         
         
         /*Metodo responsável para receber a foto, atualmente ainda está sendo efetuado os testes */
-       @RequestMapping(method=RequestMethod.POST, value="/send")
-       public ResponseEntity<String> receiveData(MultipartFile foto) {
-           Path filepath = Paths.get("c://tets/" , foto.getName() );
-           try(OutputStream os = Files.newOutputStream(filepath)){
-               os.write(foto.getBytes());
-               //System.out.println(foto.getOriginalFilename());
-               return ResponseEntity.ok("Ok");
+       @RequestMapping(method=RequestMethod.POST, value="/send/{id}", produces =  MediaType.APPLICATION_JSON_VALUE)
+       public String receiveData(@RequestParam MultipartFile foto,@PathVariable(value="id")int id){
+           Produto p = produtoRepository.findById(id);
+           try{
+               p.convert(foto);
+               produtoRepository.save(p);
+                return "Ok";
            }catch(Exception e){
-               e.printStackTrace();;
-               return ResponseEntity.ok(e.getMessage());
+               return e.getMessage();
+               
            }
-          
-    }
+           
+       }
 
 }
