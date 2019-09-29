@@ -5,10 +5,7 @@
  */
 package config;
 
-/**
- *
- * @author Leonardo
- */
+
 public class SecurityConfig  {
-    
+    /*Vai ser responsável por gerar um Token de autenticação*/
 }

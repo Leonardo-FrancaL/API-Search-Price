@@ -8,10 +8,6 @@ package com.apirest.repository;
 import com.apirest.models.Especificacoes;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
- * @author Leonardo
- */
 public interface EspecificacoesRepository extends JpaRepository<Especificacoes, Long> {
     Especificacoes findById(long id);
     

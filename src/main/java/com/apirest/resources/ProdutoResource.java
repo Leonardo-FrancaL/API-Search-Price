@@ -1,6 +1,4 @@
 package com.apirest.resources;
-
-import com.apirest.models.Especificacoes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,30 +9,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.apirest.repository.ProdutoRepository;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
 import com.apirest.models.Produto;
 import com.apirest.models.ProdutoFactory;
 import com.apirest.repository.EspecificacoesRepository;
-import com.fasterxml.classmate.AnnotationConfiguration;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import java.util.List;
-import javax.persistence.Query;
-
-
 import javax.validation.Valid;
-import org.apache.coyote.Response;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Example;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -85,6 +72,8 @@ public class ProdutoResource {
             return produtoRepository.save(produto);
 	}
         
+        
+        /*Metodo responsável para receber a foto, atualmente ainda está sendo efetuado os testes */
        @RequestMapping(method=RequestMethod.POST, value="/send")
        public ResponseEntity<String> receiveData(MultipartFile foto) {
            Path filepath = Paths.get("c://tets/" , foto.getName() );

@@ -8,10 +8,7 @@ package com.apirest.repository;
 import com.apirest.models.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
- * @author Leonardo
- */
+
 public interface EmpresaRepository extends JpaRepository<Empresa, Long>{
      Empresa findById(long id);
 }

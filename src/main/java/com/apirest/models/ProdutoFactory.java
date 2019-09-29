@@ -12,12 +12,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-/* 
- *
- * @author Leonardo
- */
-public class ProdutoFactory {
 
+public class ProdutoFactory {
+/*Classe não utilizada*/
     private static final SessionFactory sessionFactory;
 
 		static {

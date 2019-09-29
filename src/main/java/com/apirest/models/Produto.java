@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="TB_PRODUTO")
 public class Produto implements Serializable {
-	
+	/*Cria a tabela produto e seus campos mostrados abaixo*/
 	private static final long serialVersionUID = 1l;
 	
 	@Id

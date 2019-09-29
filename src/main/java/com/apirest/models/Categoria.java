@@ -12,10 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author Leonardo
- */
+
 
 @Entity
 @Table(name="TB_CATEGORIA")

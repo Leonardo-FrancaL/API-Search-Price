@@ -12,15 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- *
- * @author Leonardo
- */
 @Entity
 @Table(name="TB_USER")
 public class Usuario  implements Serializable {
 
-    
+    /*Cria a tabela de usuario, o user que vai logar para cadastrar produtos 
+    ou seja nesse caso uma empresa que quer exibir o seus produtos no site*/
     private static final long serialVersionUID = 1l;
     
     @Id

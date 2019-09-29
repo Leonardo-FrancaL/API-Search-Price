@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author Leonardo
- */
+
 @RestController
 @RequestMapping(value="/espc")
 @Api(value="API REST Especificacoes")
 @CrossOrigin(origins="*", allowedHeaders = "*") 
 public class EspecificacoesResource {
-    
+    /*Como tem a classe ProdutoResouce essa classe não é necessaria
+    pois a classe ProdutoResouce já tem um metodo que retorna um JSON com o produto e suas respectivas informações*/
 }

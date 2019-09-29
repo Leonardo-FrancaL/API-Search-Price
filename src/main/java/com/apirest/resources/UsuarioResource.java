@@ -24,10 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author Leonardo
- */
 
 @RestController
 @RequestMapping(value="/user")
@@ -35,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins="*", allowedHeaders = "*")
 public class UsuarioResource {
     
+    /*Utilizado para cadastrar os usuarios*/
     @Autowired
     UsuarioRepository usuarioRepository;
     

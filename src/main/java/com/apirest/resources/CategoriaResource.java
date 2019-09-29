@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- *
- * @author Leonardo
- */
+
 
 @RestController
 @RequestMapping(value="/cat")
@@ -28,6 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins="*", allowedHeaders = "*") 
 public class CategoriaResource {
     
+    
+    /*Lista as catrgorias*/
     @Autowired
     CategoriaRepository categoriaRepository;
     

@@ -8,10 +8,7 @@ package com.apirest.repository;
 import com.apirest.models.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
- * @author Leonardo
- */
+
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
     Categoria findById(long id);
     

@@ -14,13 +14,13 @@ import javax.persistence.Table;
 
 
 
-/**
- *
- * @author Leonardo
- */
 @Entity
 @Table(name="TB_EMPRESA")
 public class Empresa {
+    
+    /*Ainda sera implementado 
+    tera uma relação de 1 para muitos com produto
+    Ex: 1 empresa pode ter varios produtos */
     
     private static final long serialVersionUID = 1l;
     
