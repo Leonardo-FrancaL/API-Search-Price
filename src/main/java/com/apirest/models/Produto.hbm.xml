@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.apirest.models.Produto" table="TB_PRODUTO">
+        <id name="PROD_ID" type="java.lang.Long">
+            <column name="cust_id" />
+            <generator class="increment" />
+        </id>
+        <property name="desc_produto" type="string">
+            <column name="desc_produto" length="255" not-null="true" />
+        </property>
+        <property name="linkSite" type="string">
+            <column name="linkSite" length="255" not-null="true" />
+        </property>
+        <property name="nome_produto" type="string">
+            <column name="nome_produto" length="255" not-null="true" />
+        </property>
+        
+        <property name="CAT_ID" type="int">
+            <column name="CAT_ID"  not-null="true" />
+        </property>
+   </class>
+</hibernate-mapping>

@@ -1,5 +1,6 @@
 package com.apirest.resources;
 
+import com.apirest.models.Especificacoes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,24 +18,47 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import com.apirest.models.Produto;
+import com.apirest.models.ProdutoFactory;
+import com.apirest.repository.EspecificacoesRepository;
+import com.fasterxml.classmate.AnnotationConfiguration;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import java.util.List;
+import javax.persistence.Query;
+
 
 import javax.validation.Valid;
+import org.apache.coyote.Response;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Example;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
 @RequestMapping(value="/api")
 @Api(value="API REST Produtos")
-@CrossOrigin(origins="*") //Determina quais domínios podem acessar a API
+@CrossOrigin(origins="*", allowedHeaders = "*") //Determina quais domínios podem acessar a API
 public class ProdutoResource {
 	
 	@Autowired
 	ProdutoRepository produtoRepository;
+        
+        @Autowired
+        EspecificacoesRepository espec;
 	
+        private static final Session s = new ProdutoFactory().getSession();
+
 	@ApiOperation(value = "Mostra uma lista de produtos")
 	@GetMapping("/produtos")
 	public List<Produto> listaProdutos(){
-		return produtoRepository.findAll();
+            
+            return produtoRepository.findAll();
 	}
 	
 	@ApiOperation(value="Mostra um unico produto")
@@ -50,15 +74,29 @@ public class ProdutoResource {
 	}
 	
 	@ApiOperation(value="Deleta um produto")
-	@DeleteMapping("/produto")
-	public void deletarProduto(@RequestBody @Valid Produto produto) {
-		produtoRepository.delete(produto);
+	@DeleteMapping("/produto/{id}")
+	public void deletarProduto(@PathVariable(value="id")long id) {
+		produtoRepository.delete(produtoRepository.findById(id));
 	}
 	
 	@ApiOperation(value="Atualiza um produto")
 	@PutMapping("/produto")
 	public Produto atualizarProduto(@RequestBody @Valid Produto produto) {
-		return produtoRepository.save(produto);
+            return produtoRepository.save(produto);
 	}
+        
+       @RequestMapping(method=RequestMethod.POST, value="/send")
+       public ResponseEntity<String> receiveData(MultipartFile foto) {
+           Path filepath = Paths.get("c://tets/" , foto.getName() );
+           try(OutputStream os = Files.newOutputStream(filepath)){
+               os.write(foto.getBytes());
+               //System.out.println(foto.getOriginalFilename());
+               return ResponseEntity.ok("Ok");
+           }catch(Exception e){
+               e.printStackTrace();;
+               return ResponseEntity.ok(e.getMessage());
+           }
+          
+    }
 
 }
