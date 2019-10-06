@@ -13,19 +13,10 @@ import com.apirest.repository.ProdutoRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import com.apirest.models.Produto;
-import com.apirest.models.ProdutoFactory;
 import com.apirest.repository.EspecificacoesRepository;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.Clock;
 import java.util.List;
 import javax.validation.Valid;
-import org.hibernate.Session;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,8 +33,6 @@ public class ProdutoResource {
         
         @Autowired
         EspecificacoesRepository espec;
-	
-        private static final Session s = new ProdutoFactory().getSession();
 
 	@ApiOperation(value = "Mostra uma lista de produtos")
 	@GetMapping("/produtos")
@@ -63,7 +52,7 @@ public class ProdutoResource {
 	public Produto salvarProduto(@RequestBody @Valid Produto produto) {
 		return produtoRepository.save(produto);
 	}
-	
+	 
 	@ApiOperation(value="Deleta um produto")
 	@DeleteMapping("/produto/{id}")
 	public void deletarProduto(@PathVariable(value="id")long id) {

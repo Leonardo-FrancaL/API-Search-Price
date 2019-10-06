@@ -43,6 +43,30 @@ public class Produto implements Serializable {
         @Column(length = 1000)
         private String picture;
        
+        @NotNull
+        @Column(length = 1000)
+        private String linkSite;
+ 
+        
+        @OneToOne
+        @JoinColumn(name = "CAT_ID")
+        private Categoria categoria;
+        
+        @OneToMany(cascade = CascadeType.ALL)
+        @JoinColumn(name = "PROD_ID")
+        private List <Especificacoes> especfiEspecificacoes;
+
+        @OneToMany(cascade= CascadeType.ALL)
+        @JoinColumn(name = "PROD_ID")
+        private List<Oferta> ofertas;
+
+        public List<Oferta> getOfertas() {
+            return ofertas;
+        }
+
+        public void setOfertas(List<Oferta> ofertas) {
+            this.ofertas = ofertas;
+        }
         
         public void convert(MultipartFile foto) throws Exception{
             try{
@@ -63,26 +87,6 @@ public class Produto implements Serializable {
             this.picture = picture;
         }
 
-        @NotNull
-        @Column(length = 1000)
-        private String linkSite;
-
-        public String getLinkSite() {
-            return linkSite;
-        }
-
-        public void setLinkSite(String linkSite) {
-            this.linkSite = linkSite;
-        }        
-        
-        @OneToOne
-        @JoinColumn(name = "CAT_ID")
-        private Categoria categoria;
-        
-        @OneToMany(cascade = CascadeType.ALL)
-        @JoinColumn(name = "PROD_ID")
-        private List <Especificacoes> especfiEspecificacoes;
-
         public List<Especificacoes> getEspecfiEspecificacoes() {
             return especfiEspecificacoes;
         }
@@ -91,6 +95,15 @@ public class Produto implements Serializable {
             this.especfiEspecificacoes = especfiEspecificacoes;
         }
 
+        
+        public String getLinkSite() {
+            return linkSite;
+        }
+
+        public void setLinkSite(String linkSite) {
+            this.linkSite = linkSite;
+        }       
+        
         public Categoria getCategoria() {
             return categoria;
         }

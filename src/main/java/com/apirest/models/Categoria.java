@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,6 +27,17 @@ public class Categoria {
     private String descricao;
     
    
+    private Long idPAI;
+
+    public Long getIdPAI() {
+        return idPAI;
+    }
+
+    public void setIdPAI(Long idPAI) {
+        this.idPAI = idPAI;
+    }
+    
+    
     
     
 
