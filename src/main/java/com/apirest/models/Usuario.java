@@ -26,8 +26,26 @@ public class Usuario  implements Serializable {
    
     private String email;
     private String senha;
-    private String empresa;
-    private String linkSite;
+    private String nome;
+    private int adm;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getAdm() {
+        return adm;
+    }
+
+    public void setAdm(int adm) {
+        this.adm = adm;
+    }
+    
+    
 
     public String getEmail() {
         return email;
@@ -45,21 +63,14 @@ public class Usuario  implements Serializable {
         this.senha = senha;
     }
 
-    public String getEmpresa() {
-        return empresa;
+    public String getNome() {
+        return nome;
     }
 
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getLinkSite() {
-        return linkSite;
-    }
-
-    public void setLinkSite(String linkSite) {
-        this.linkSite = linkSite;
-    }
     
     
 }

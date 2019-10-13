@@ -41,4 +41,10 @@ public class CategoriaResource {
     public Categoria listaProdutoUnico(@PathVariable(value="id")long id) {
         return categoriaRepository.findById(id);
     }
+    
+    @ApiOperation(value="Mostra uma unica categoria")
+    @GetMapping("/categoriass/{id}")
+    public List<Categoria> listaCategoriasFilhas(@PathVariable(value="id")long id){
+        return categoriaRepository.findByIdPAI(id);
+    }
 }

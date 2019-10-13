@@ -5,10 +5,14 @@
  */
 package com.apirest.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -27,13 +31,16 @@ public class Categoria {
     private String descricao;
     
    
-    private Long idPAI;
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name ="idPAI") 
+    private Categoria idPAI;
 
-    public Long getIdPAI() {
+    
+    public Categoria getIdPAI() {
         return idPAI;
     }
 
-    public void setIdPAI(Long idPAI) {
+    public void setIdPAI(Categoria idPAI) {
         this.idPAI = idPAI;
     }
     

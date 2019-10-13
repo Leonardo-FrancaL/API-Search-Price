@@ -47,6 +47,11 @@ public class UsuarioResource {
 		return usuarioRepository.findByEmail(u);
 	}
         
+        @GetMapping("/usuarioi/{id}")
+        public Usuario listaUsuarioId(@PathVariable(value="id")long id) {
+		return usuarioRepository.findById(id);
+	}
+        
 	@ApiOperation(value="Salva um usuario")
 	@PostMapping("/usuario")
 	public Usuario salvarUsuario(@RequestBody @Valid Usuario produto) { 
