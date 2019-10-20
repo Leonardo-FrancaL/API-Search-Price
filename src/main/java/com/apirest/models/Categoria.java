@@ -5,6 +5,7 @@
  */
 package com.apirest.models;
 
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="TB_CATEGORIA")
-public class Categoria {
+public class Categoria implements Serializable{
     
     
     private static final long serialVersionUID = 1l;
@@ -31,7 +32,7 @@ public class Categoria {
     private String descricao;
     
    
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name ="idPAI") 
     private Categoria idPAI;
 

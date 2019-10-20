@@ -59,9 +59,9 @@ public class UsuarioResource {
 	}
 	
 	@ApiOperation(value="Deleta um usuario")
-	@DeleteMapping("/usuario")
-	public void deletarProduto(@RequestBody @Valid Usuario produto) {
-		usuarioRepository.delete(produto);
+	@DeleteMapping("/usuario/{id}")
+	public void deletarProduto(@PathVariable(value="id")long id) {
+            usuarioRepository.delete(usuarioRepository.findById(id));
 	}
 	
 	@ApiOperation(value="Atualiza um usuario")
