@@ -8,6 +8,7 @@ package com.apirest.resources;
 import com.apirest.models.Oferta;
 import com.apirest.repository.OfertaRepository;
 import io.swagger.annotations.Api;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,22 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value="/oferta")
+@RequestMapping(value="/ofer")
 @Api(value="API REST Produtos")
 @CrossOrigin(origins="*", allowedHeaders = "*")
 public class OfertaResource {
     
-   /* 
+   /*
     @Autowired 
     OfertaRepository ofertaRepository;
     
     
-    @GetMapping("/oferta/{id}")
-    public Oferta listarUnicaOferta(@PathVariable(value="id")long id){
-        return ofertaRepository.findById(id);
+    @GetMapping("/ofertas")
+    public List<Oferta> listarUnicaOferta(){
+        return ofertaRepository.findAll();
     }
     
-    @PostMapping("produto")
-    public Oferta salvaUmaOferta(@RequestBody @Valid Oferta oferta)*/
+    */
     
 }
