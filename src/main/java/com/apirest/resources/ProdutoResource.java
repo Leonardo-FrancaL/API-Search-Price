@@ -1,4 +1,5 @@
 package com.apirest.resources;
+import com.apirest.models.HistoricoMelhorPreco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +14,7 @@ import com.apirest.repository.ProdutoRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import com.apirest.models.Produto;
-import com.apirest.repository.EspecificacoesRepository;
+import com.apirest.repository.HistoricoMelhorPrecoRepository;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.http.MediaType;
@@ -27,13 +28,14 @@ import org.springframework.web.multipart.MultipartFile;
 @Api(value="API REST Produtos")
 @CrossOrigin(origins="*", allowedHeaders = "*") //Determina quais domínios podem acessar a API
 public class ProdutoResource {
+    
 	
 	@Autowired
 	ProdutoRepository produtoRepository;
         
         @Autowired
-        EspecificacoesRepository espec;
-
+        HistoricoMelhorPrecoRepository his;
+        
 	@ApiOperation(value = "Mostra uma lista de produtos")
 	@GetMapping("/produtos")
 	public List<Produto> listaProdutos(){
