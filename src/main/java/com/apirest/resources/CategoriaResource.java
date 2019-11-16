@@ -49,6 +49,11 @@ public class CategoriaResource {
     public List<Categoria> listaCategoriasFilhas(@PathVariable(value = "id") long id) {
         return categoriaRepository.findByIdPAI(id);
     }
+    
+    @GetMapping("/categoriasN/{name}")
+    public Categoria listCatsName(@PathVariable(value = "name") String name){
+        return categoriaRepository.findByDescricao(name);
+    }
 
     @DeleteMapping("/categorias/{id}")
     public void deleteCategoria(@PathVariable(value = "id") long id) {

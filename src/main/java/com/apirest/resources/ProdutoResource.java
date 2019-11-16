@@ -1,4 +1,5 @@
 package com.apirest.resources;
+import com.apirest.models.Categoria;
 import com.apirest.models.HistoricoMelhorPreco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -61,12 +62,22 @@ public class ProdutoResource {
 		produtoRepository.delete(produtoRepository.findById(id));
 	}
 	
+        @ApiOperation(value="Mostra um unico produto")
+	@GetMapping("/produtoN/{name}")
+        public Produto listProdByName(@PathVariable(value = "name") String name){
+            return null;//produtoRepository.findByDescproduto(name);
+        }
+        
 	@ApiOperation(value="Atualiza um produto")
 	@PutMapping("/produto")
 	public Produto atualizarProduto(@RequestBody @Valid Produto produto) {
             return produtoRepository.save(produto);
 	}
         
+        @PostMapping("/produtocat")
+        public List<Produto> getProdPerCat(@RequestBody @Valid Categoria id){
+            return produtoRepository.findByCategoria(id);
+        }
         
         /*Metodo responsável para receber a foto, atualmente ainda está sendo efetuado os testes */
        @RequestMapping(method=RequestMethod.POST, value="/send/{id}", produces =  MediaType.APPLICATION_JSON_VALUE)
