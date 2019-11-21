@@ -37,7 +37,18 @@ public class Avaliacao implements Serializable {
     private String aval_titulo;
     
     private String aval_post_owner;
+    
+    private int usr_id;
 
+    public int getUsr_id() {
+        return usr_id;
+    }
+
+    public void setUsr_id(int usr_id) {
+        this.usr_id = usr_id;
+    }
+    
+    
     public String getAval_post_owner() {
         return aval_post_owner;
     }
